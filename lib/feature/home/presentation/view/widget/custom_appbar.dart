@@ -32,65 +32,41 @@ class CustomAppBar extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 20,
-          ),
-          AnimatedShimmerText(
-            text: 'Ahmed Ashraf',
-            style: AppStyle.stylebold24.copyWith(
-              color: AppColor.kPrimaryColor,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Row(
+          children: [
+            AnimatedShimmerText(
+              text: 'Ahmed Ashraf',
+              style: AppStyle.stylebold24.copyWith(
+                color: AppColor.kPrimaryColor,
+              ),
             ),
-          ),
-          Spacer(
-            flex: 4,
-          ),
-          Text('Home',
-              style:
-                  AppStyle.styleMedium16.copyWith(color: AppColor.kBlackColor)),
-          SizedBox(
-            width: 20,
-          ),
-          Text('About me',
-              style:
-                  AppStyle.styleMedium16.copyWith(color: AppColor.kBlackColor)),
-          SizedBox(
-            width: 20,
-          ),
-          Text('Skills',
-              style:
-                  AppStyle.styleMedium16.copyWith(color: AppColor.kBlackColor)),
-          SizedBox(
-            width: 20,
-          ),
-          Text('Experience',
-              style:
-                  AppStyle.styleMedium16.copyWith(color: AppColor.kBlackColor)),
-          SizedBox(
-            width: 20,
-          ),
-          Text('Projects',
-              style:
-                  AppStyle.styleMedium16.copyWith(color: AppColor.kBlackColor)),
-          SizedBox(
-            width: 20,
-          ),
-          Text('Contact',
-              style:
-                  AppStyle.styleMedium16.copyWith(color: AppColor.kBlackColor)),
-          Spacer(
-            flex: 2,
-          ),
-          BlocProvider(
-            create: (context) => AudioCubit(),
-            child: CustomAudioButton(),
-          ),
-          SizedBox(
-            width: 20,
-          ),
-        ],
+            const Spacer(flex: 4),
+            _buildNavItem('Home'),
+            _buildNavItem('About me'),
+            _buildNavItem('Skills'),
+            _buildNavItem('Experience'),
+            _buildNavItem('Projects'),
+            _buildNavItem('Contact'),
+            const Spacer(flex: 2),
+            BlocProvider(
+              create: (context) => AudioCubit(),
+              child: CustomAudioButton(),
+            ),
+          ],
+        ),
       ),
     );
   }
+}
+
+Widget _buildNavItem(String title) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 10),
+    child: Text(
+      title,
+      style: AppStyle.styleMedium16.copyWith(color: AppColor.kBlackColor),
+    ),
+  );
 }

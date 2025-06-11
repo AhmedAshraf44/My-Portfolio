@@ -1,5 +1,5 @@
+import 'package:ahmed_ashraf_website/feature/home/presentation/view/widget/shaking_avatar.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../core/app_color.dart';
 
 class HoverUnderlineText extends StatefulWidget {
@@ -33,6 +33,57 @@ class _HoverUnderlineTextState extends State<HoverUnderlineText> {
             curve: Curves.easeOut,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class HoverableImage extends StatefulWidget {
+  const HoverableImage({super.key});
+
+  @override
+  State<HoverableImage> createState() => _HoverableImageState();
+}
+
+class _HoverableImageState extends State<HoverableImage> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedScale(
+        scale: _isHovered ? 1.05 : 1.0,
+        duration: const Duration(milliseconds: 300),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    offset: const Offset(0, 25),
+                    blurRadius: 50,
+                  ),
+                ],
+              ),
+              child: ShakingAvatar(),
+            ),
+            if (_isHovered)
+              Container(
+                width: MediaQuery.sizeOf(context).width * 0.2,
+                height: MediaQuery.sizeOf(context).width * 0.2,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color:
+                      AppColor.kWhiteColor.withOpacity(0.1), // overlay effect
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }

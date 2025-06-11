@@ -69,6 +69,7 @@ abstract class AppStyle {
     fontSize: 16,
     fontWeight: FontWeight.w600,
   );
+
   static const TextStyle styleBold60 = TextStyle(
     fontSize: 60,
     fontWeight: FontWeight.bold,

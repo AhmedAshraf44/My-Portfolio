@@ -1,15 +1,12 @@
-import 'dart:async';
-import 'dart:math';
-
 import 'package:ahmed_ashraf_website/core/app_style.dart';
 import 'package:ahmed_ashraf_website/core/assets.dart';
 import 'package:ahmed_ashraf_website/feature/home/presentation/manger/audio_cubit/audio_cubit.dart';
 import 'package:ahmed_ashraf_website/feature/home/presentation/view/widget/animated_shimmer_text.dart';
-import 'package:ahmed_ashraf_website/feature/home/presentation/view/widget/custom_animated_button.dart';
 import 'package:ahmed_ashraf_website/feature/home/presentation/view/widget/custom_audio_button.dart';
-import 'package:ahmed_ashraf_website/feature/home/presentation/view/widget/home_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../core/app_color.dart';
 
 class HomeTabletLayout extends StatelessWidget {
   const HomeTabletLayout({super.key});
@@ -45,18 +42,49 @@ class AboutMeSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AnimatedShimmerText(text: 'About Me'),
-        SizedBox(
-          height: 20,
-        ),
-        Text(
-          """Flutter Developer with 1+ year of experience building high-performance, scalable mobile applications across e-commerce, e-learning, and other domains. Passionate about creating efficient, user-friendly apps using modern architectures and clean code practices. Experienced in solving complex problems and continuously improving technical skills. Seeking a challenging opportunity to contribute to impactful mobile development projects.""",
-          style: AppStyle.styleRegular14(context),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 50),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          AnimatedShimmerText(
+            text: 'About Me',
+            style: AppStyle.sectionTitle,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Color(0xffFEFEFF),
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: AppColor.kBlackColor.withValues(alpha: .1),
+                  offset: Offset(0, 2),
+                  blurRadius: 4,
+                  spreadRadius: 1,
+                )
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Passionate Flutter Developer',
+                      style: AppStyle.stylebold24),
+                  SizedBox(height: 20),
+                  Text(
+                    """Flutter Developer with 1+ year of experience building high-performance, scalable mobile applications across e-commerce, e-learning, and other domains. Passionate about creating efficient, user-friendly apps using modern architectures and clean code practices. Experienced in solving complex problems and continuously improving technical skills. Seeking a challenging opportunity to contribute to impactful mobile development projects.""",
+                    style: AppStyle.mediumText,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

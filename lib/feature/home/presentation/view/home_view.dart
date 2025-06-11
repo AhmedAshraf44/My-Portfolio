@@ -55,7 +55,7 @@ class _HomeViewState extends State<HomeView> {
             )
           : null,
       body: AdaptiveLayoutWidget(
-        mobileLayout: (context) => const HomeMobileLayout(),
+        mobileLayout: (context) => const HomeDesktopLayout(),
         tabletLayout: (context) => const HomeDesktopLayout(),
         desktopLayout: (context) => const HomeDesktopLayout(),
       ),

@@ -5,8 +5,11 @@ import 'package:ahmed_ashraf_website/core/function/open_launch_url.dart';
 import 'package:ahmed_ashraf_website/feature/home/presentation/view/widget/animated_shimmer_text.dart';
 import 'package:ahmed_ashraf_website/feature/home/presentation/view/widget/animated_typing_text.dart';
 import 'package:ahmed_ashraf_website/feature/home/presentation/view/widget/custom_animated_button.dart';
+import 'package:ahmed_ashraf_website/feature/home/presentation/view/widget/hover_underline_text.dart';
 import 'package:ahmed_ashraf_website/feature/home/presentation/view/widget/scrolling_text_banner.dart';
 import 'package:flutter/material.dart';
+
+import 'shaking_avatar.dart';
 
 class HomeSection extends StatelessWidget {
   const HomeSection({
@@ -17,7 +20,7 @@ class HomeSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.sizeOf(context).width,
-      height: MediaQuery.sizeOf(context).height,
+      height: MediaQuery.sizeOf(context).height + 50,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
@@ -33,10 +36,8 @@ class HomeSection extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CircleAvatar(
-            radius: MediaQuery.sizeOf(context).width * 0.1,
-            backgroundImage: AssetImage(Assets.imageAhemd),
-          ),
+          HoverableImage(),
+          //ShakingAvatar(),
           SizedBox(height: 20),
           AnimatedShimmerText(
             text: 'Ahmed Ashraf',
